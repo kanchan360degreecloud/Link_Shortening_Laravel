@@ -108,15 +108,12 @@ class ShortUrlCreateController extends Controller
                     } 
                     echo json_encode(["status" => "true", "short_url" => $url,"redirect_url"=> $urlget,"message"=> "success"], 200);
                     exit();
-                    return response()->json(["status" => "true", "short_url" => $url,"redirect_url"=> $urlget,"message"=> "success"], 200);
                 } else {
-                    return response()->json(["status" => "false", "message" => "Incomplete Input URL", "details" => "Required Proper Input URL"], 200);  
+                    exit(json_encode(["status" => "false", "message" => "Incomplete Input URL", "details" => "Required Proper Input URL"], 200));
                 }
-
             }
-
         }else{
-            return response()->json(["status" => "false", "message" => "Required Input URL", "details" => "Required Input URL"], 200);
+            exit(json_encode(["status" => "false", "message" => "Required Input URL", "details" => "Required Input URL"], 200));
         }
 
     }
